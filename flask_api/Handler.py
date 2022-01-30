@@ -60,27 +60,27 @@ class ServerHandler():
         self.Propagate_matrix = {}
 
         with open("plateclick_data/MainDishes_prop.pickle", "rb") as f_handle:
-            self.Propagate_matrix["normal"] = pickle.load(f_handle)
+            self.Propagate_matrix["normal"] = pickle.load(f_handle, encoding='latin1')
         with open("plateclick_data/vegetarian_prop.pickle", "rb") as f_handle:
-            self.Propagate_matrix["vegetarian"] = pickle.load(f_handle)
+            self.Propagate_matrix["vegetarian"] = pickle.load(f_handle, encoding='latin1')
         with open("plateclick_data/vegan_prop.pickle", "rb") as f_handle:
-            self.Propagate_matrix["vegan"] = pickle.load(f_handle)
+            self.Propagate_matrix["vegan"] = pickle.load(f_handle, encoding='latin1')
         with open("plateclick_data/kosher_prop.pickle", "rb") as f_handle:
-            self.Propagate_matrix["kosher"] = pickle.load(f_handle)
+            self.Propagate_matrix["kosher"] = pickle.load(f_handle, encoding='latin1')
         with open("plateclick_data/halal_prop.pickle", "rb") as f_handle:
-            self.Propagate_matrix["halal"] = pickle.load(f_handle)
+            self.Propagate_matrix["halal"] = pickle.load(f_handle, encoding='latin1')
 
         self.Image_id_list = {}
         with open("plateclick_data/MainDishes_items.pickle", "rb") as f_handle:
-            self.Image_id_list["normal"] = pickle.load(f_handle)
+            self.Image_id_list["normal"] = pickle.load(f_handle, encoding='latin1')
         with open("plateclick_data/vegetarian_items.pickle", "rb") as f_handle:
-            self.Image_id_list["vegetarian"] = pickle.load(f_handle)
+            self.Image_id_list["vegetarian"] = pickle.load(f_handle, encoding='latin1')
         with open("plateclick_data/vegan_items.pickle", "rb") as f_handle:
-            self.Image_id_list["vegan"] = pickle.load(f_handle)
+            self.Image_id_list["vegan"] = pickle.load(f_handle, encoding='latin1')
         with open("plateclick_data/kosher_items.pickle", "rb") as f_handle:
-            self.Image_id_list["kosher"] = pickle.load(f_handle)
+            self.Image_id_list["kosher"] = pickle.load(f_handle, encoding='latin1')
         with open("plateclick_data/halal_items.pickle", "rb") as f_handle:
-            self.Image_id_list["halal"] = pickle.load(f_handle)
+            self.Image_id_list["halal"] = pickle.load(f_handle, encoding='latin1')
 
         self.Dist_matrix_size = dict()
         self.Dist_matrix_size["normal"] = len(self.Image_id_list["normal"])
@@ -91,15 +91,15 @@ class ServerHandler():
 
         self.nutrition_rank = {}
         with open("plateclick_data/MainDishes_ranks.pickle", "rb") as f_handle:
-            self.nutrition_rank["normal"] = pickle.load(f_handle)
+            self.nutrition_rank["normal"] = pickle.load(f_handle, encoding='latin1')
         with open("plateclick_data/vegetarian_ranks.pickle", "rb") as f_handle:
-            self.nutrition_rank["vegetarian"] = pickle.load(f_handle)
+            self.nutrition_rank["vegetarian"] = pickle.load(f_handle, encoding='latin1')
         with open("plateclick_data/vegan_ranks.pickle", "rb") as f_handle:
-            self.nutrition_rank["vegan"] = pickle.load(f_handle)
+            self.nutrition_rank["vegan"] = pickle.load(f_handle, encoding='latin1')
         with open("plateclick_data/kosher_ranks.pickle", "rb") as f_handle:
-            self.nutrition_rank["kosher"] = pickle.load(f_handle)
+            self.nutrition_rank["kosher"] = pickle.load(f_handle, encoding='latin1')
         with open("plateclick_data/halal_ranks.pickle", "rb") as f_handle:
-            self.nutrition_rank["halal"] = pickle.load(f_handle)
+            self.nutrition_rank["halal"] = pickle.load(f_handle, encoding='latin1')
 
         self.Kpp = KPlusPlus(self.Dist_matrix_size, N = 10)
 
@@ -322,15 +322,15 @@ class KPlusPlus():
         
         self.Dist_Pairwise = {}
         with open("plateclick_data/MainDishes_pairwise_dist.pickle", "rb") as f_handle:
-            self.Dist_Pairwise["normal"] = pickle.load(f_handle)
+            self.Dist_Pairwise["normal"] = pickle.load(f_handle, encoding='latin1')
         with open("plateclick_data/vegan_pairwise_dist.pickle", "rb") as f_handle:
-            self.Dist_Pairwise["vegan"] = pickle.load(f_handle)
+            self.Dist_Pairwise["vegan"] = pickle.load(f_handle, encoding='latin1')
         with open("plateclick_data/vegetarian_pairwise_dist.pickle", "rb") as f_handle:
-            self.Dist_Pairwise["vegetarian"] = pickle.load(f_handle)
+            self.Dist_Pairwise["vegetarian"] = pickle.load(f_handle, encoding='latin1')
         with open("plateclick_data/kosher_pairwise_dist.pickle", "rb") as f_handle:
-            self.Dist_Pairwise["kosher"] = pickle.load(f_handle)
+            self.Dist_Pairwise["kosher"] = pickle.load(f_handle, encoding='latin1')
         with open("plateclick_data/halal_pairwise_dist.pickle", "rb") as f_handle:
-            self.Dist_Pairwise["halal"] = pickle.load(f_handle)
+            self.Dist_Pairwise["halal"] = pickle.load(f_handle, encoding='latin1')
         
         self.Dist_matrix_size = Dist_matrix_size  # dict
 
