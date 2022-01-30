@@ -12,20 +12,20 @@ api = Api(app)
 
 class Init(Resource):
     def post(self):
-    	print "Init Post Accepted"
+        print("Init Post Accepted")
         session.clear()
         json_data = request.get_json()
-    	print json_data
+        print(json_data)
         if json_data is not None:
             sec_data = {
                 "secret": "6LdOMAUTAAAAAG_67lKcGHa9rlaiI6mrHczQY3hB",
                 "response": json_data["g-recaptcha-response"]
             }
             r = requests.post("https://www.google.com/recaptcha/api/siteverify", data=sec_data)
-            print r.json()
-	    if r.json()["success"]:
+            print(r.json())
+        if r.json()["success"]:
                 session['uid'] = secret.random_uid()
-                print 'user init: ' + session['uid']
+                print('user init: ' + session['uid'])
                 category = "normal"
                 if int(json_data["category"]) == 0:
                     category = "normal"
@@ -38,15 +38,14 @@ class Init(Resource):
                 elif int(json_data["category"]) == 4:
                     category = "halal"
                 server_handler.user_register(session['uid'], category, json_data["goals"])
-
                 return {"success": True}
-            else:
-                return {"success": False}
+        else:
+            return {"success": False}
 
 class Update(Resource):
     def post(self):
         json_data = request.get_json()
-        print json_data
+        print(json_data)
         if json_data is None:
             json_data = []
         else:
@@ -79,7 +78,7 @@ def root():
 @app.route('/<path:path>')
 def static_proxy(path):
     # send_static_file will guess the correct MIME type
-    print 'static: ' + path
+    print('static: ' + path)
     return send_from_directory('../public', path)
 
 if __name__ == '__main__':
