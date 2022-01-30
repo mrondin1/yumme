@@ -17,28 +17,28 @@ class Init(Resource):
         json_data = request.get_json()
         print(json_data)
         if json_data is not None:
-            sec_data = {
-                "secret": "6LdOMAUTAAAAAG_67lKcGHa9rlaiI6mrHczQY3hB",
-                "response": json_data["g-recaptcha-response"]
-            }
-            r = requests.post("https://www.google.com/recaptcha/api/siteverify", data=sec_data)
-            print(r.json())
-        if r.json()["success"]:
-                session['uid'] = secret.random_uid()
-                print('user init: ' + session['uid'])
+        #     sec_data = {
+        #         "secret": "6LdOMAUTAAAAAG_67lKcGHa9rlaiI6mrHczQY3hB",
+        #         "response": json_data["g-recaptcha-response"]
+        #     }
+        #     r = requests.post("https://www.google.com/recaptcha/api/siteverify", data=sec_data)
+        #     print(r.json())
+        # if r.json()["success"]:
+            session['uid'] = secret.random_uid()
+            print('user init: ' + session['uid'])
+            category = "normal"
+            if int(json_data["category"]) == 0:
                 category = "normal"
-                if int(json_data["category"]) == 0:
-                    category = "normal"
-                elif int(json_data["category"]) == 1:
-                    category = "vegetarian"
-                elif int(json_data["category"]) == 2:
-                    category = "vegan"
-                elif int(json_data["category"]) == 3:
-                    category = "kosher"
-                elif int(json_data["category"]) == 4:
-                    category = "halal"
-                server_handler.user_register(session['uid'], category, json_data["goals"])
-                return {"success": True}
+            elif int(json_data["category"]) == 1:
+                category = "vegetarian"
+            elif int(json_data["category"]) == 2:
+                category = "vegan"
+            elif int(json_data["category"]) == 3:
+                category = "kosher"
+            elif int(json_data["category"]) == 4:
+                category = "halal"
+            server_handler.user_register(session['uid'], category, json_data["goals"])
+            return {"success": True}
         else:
             return {"success": False}
 
